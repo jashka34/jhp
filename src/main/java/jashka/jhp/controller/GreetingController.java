@@ -10,7 +10,7 @@ public class GreetingController {
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        final String greet = "Hello (привет), %s!";
+        final String greet = "Hello, %s!";
         return new Greeting(String.format(greet, name));
     }
 }
