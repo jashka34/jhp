@@ -8,9 +8,8 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles(profiles = {"test"})
 class JhpApplicationTests {
 
-	@Test
-
-	void greetingTestEmpty() {
-	}
+   @Test
+    void greetingTestEmpty() {
+    }
 
 }

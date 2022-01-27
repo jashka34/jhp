@@ -1,0 +1,32 @@
+name: Code Quality
+
+on:
+  
+  push:
+    branches: [ feature/** ]
+
+jobs:
+  analyze-code:
+    name: Analyze Code
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVA: true
+          JAVA_FILE_NAME: checkstyle.xml
+          #VALIDATE_GOOGLE_JAVA_FORMAT: true
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

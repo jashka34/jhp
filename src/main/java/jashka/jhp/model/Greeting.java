@@ -1,17 +1,18 @@
 package jashka.jhp.model;
 
 public class Greeting {
+
     private String name;
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public Greeting(String name) {
-        this.name = name;
+    public Greeting(final String parName) {
+        this.name = parName;
     }
 }
