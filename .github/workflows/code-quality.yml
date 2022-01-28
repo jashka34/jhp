@@ -79,4 +79,3 @@ jobs:
       - name: ls
         run: |
           ls -lah target
-          ls -lah target/coverage
