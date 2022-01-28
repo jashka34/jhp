@@ -21,6 +21,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Maven Verify
+        run: mvn -B clean verify
+
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
@@ -30,3 +33,4 @@ jobs:
           #VALIDATE_GOOGLE_JAVA_FORMAT: true
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
