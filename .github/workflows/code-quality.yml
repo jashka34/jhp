@@ -6,7 +6,18 @@ on:
     branches: [ feature/** ]
 
 jobs:
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Maven Verify
+        run: mvn -B clean verify
+    
+
   analyze-code:
+    needs: [ unit-tests ]
     name: Analyze Code
     runs-on: ubuntu-latest
     permissions:
@@ -20,9 +31,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Maven Verify
-        run: mvn -B clean verify
 
       - name: Lint Code Base
         uses: github/super-linter@v4
