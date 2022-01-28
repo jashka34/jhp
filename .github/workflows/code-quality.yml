@@ -26,7 +26,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVA: true
-          JAVA_FILE_NAME: checkstyle.xml
+          JAVA_FILE_NAME: google-checkstyle.xml
           #VALIDATE_GOOGLE_JAVA_FORMAT: true
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
