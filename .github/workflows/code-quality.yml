@@ -12,8 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: adopt
+
       - name: Maven Verify
-        run: mvn -B clean verify
+        run: mvn -B clean test
     
 
   analyze-code:
@@ -29,6 +39,7 @@ jobs:
       fail-fast: false
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -42,3 +53,24 @@ jobs:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  codecov:
+    needs: [ unit-tests ]
+    name: Codecov
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: adopt
+
+      - name: Maven Verify
+        run: mvn -B clean test
+
+      - name: Code coverage
+        uses: codecov/codecov-action@v2
