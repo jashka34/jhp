@@ -73,7 +73,7 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          file: target/coverage/jacoco.xml
+          #file: target/coverage/jacoco.xml
           fail_ci_if_error: true
 
       - name: ls
