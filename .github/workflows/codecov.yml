@@ -33,7 +33,7 @@ jobs:
         run: mvn -B clean verify
 
       - name: ls-es
-      - run: |
+        run: |
           - ls -lah target
           - ls -lah target/site/jacoco/
 
