@@ -26,29 +26,29 @@ jobs:
         run: mvn -B clean test
     
 
-  linter:
-    needs: [ unit-tests ]
-    name: Linter (Checkstyle)
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_JAVA: true
-          JAVA_FILE_NAME: google-checkstyle.xml
-          #VALIDATE_GOOGLE_JAVA_FORMAT: true
-          DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#  linter:
+#    needs: [ unit-tests ]
+#    name: Linter (Checkstyle)
+#    runs-on: ubuntu-latest
+#    permissions:
+#      actions: read
+#      contents: read
+#      security-events: write
+#
+#    steps:
+#
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Lint Code Base
+#        uses: github/super-linter@v4
+#        env:
+#          VALIDATE_ALL_CODEBASE: true
+#          VALIDATE_JAVA: true
+#          JAVA_FILE_NAME: google-checkstyle.xml
+#          #VALIDATE_GOOGLE_JAVA_FORMAT: true
+#          DEFAULT_BRANCH: master
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   codecov:
     needs: [ unit-tests ]
@@ -75,7 +75,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           file: target/site/jacoco.xml
           fail_ci_if_error: true
-          path_to_write_report: ./target/codecov_report.txt
+          #path_to_write_report: ./target/codecov_report.txt
 
       - name: ls
         run: |
