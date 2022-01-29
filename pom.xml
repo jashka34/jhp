@@ -86,7 +86,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <!--execution>
+                    <execution>
                         <id>jacoco-check</id>
                         <phase>test</phase>
                         <goals>
@@ -97,37 +97,37 @@
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
-                                    <limits>
+                                    <!--limits>
                                         <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.99</minimum>
+                                            <minimum>0.01</minimum>
                                         </limit>
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.50</minimum>
+                                            <minimum>0.01</minimum>
                                         </limit>
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.99</minimum>
+                                            <minimum>0.01</minimum>
                                         </limit>
                                         <limit>
                                             <counter>COMPLEXITY</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.99</minimum>
+                                            <minimum>0.01</minimum>
                                         </limit>
                                         <limit>
                                             <counter>METHOD</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.99</minimum>
+                                            <minimum>0.01</minimum>
                                         </limit>
-                                    </limits>
+                                    </limits-->
                                 </rule>
                             </rules>
                         </configuration>
-                    </execution-->
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
