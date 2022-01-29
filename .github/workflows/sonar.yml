@@ -37,4 +37,4 @@ jobs:
       - name: ls-s
         run: |
           ls -lah target
-          ls -lah target/site/jacoco/
+          ls -lah target/site/jacoco
