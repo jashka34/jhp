@@ -74,11 +74,11 @@ jobs:
         with:
           continue-on-error: true
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          #file: target/site/jacoco.xml
+          file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: true
           path_to_write_report: target/codecov_report.txt
 
       - name: ls
         run: |
           ls -lah target
-          ls -lah target/site
+          ls -lah target/site/jacoco
