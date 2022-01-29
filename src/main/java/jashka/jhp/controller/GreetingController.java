@@ -16,10 +16,6 @@ public class GreetingController {
   public final Greeting greeting(final @RequestParam(value = "name", defaultValue = "World") String name) {
     final String greet = "Hello, %s!";
 
-    if (name.equals("Hhh")) {
-      System.out.println("Hhh name = " + name);
-    }
-
     return new Greeting(String.format(greet, name));
   }
 }
