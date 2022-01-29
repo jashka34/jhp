@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Properties;
+
 @RestController
 public class GreetingController {
 
@@ -15,10 +17,6 @@ public class GreetingController {
   @GetMapping("/greeting")
   public final Greeting greeting(final @RequestParam(value = "name", defaultValue = "World") String name) {
     final String greet = "Hello, %s!";
-
-    if (name.equals("Hhh")) System.out.println(
-            "Hhh name = " + name
-    );
 
     return new Greeting(String.format(greet, name));
   }
