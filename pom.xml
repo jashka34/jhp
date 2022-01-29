@@ -20,7 +20,8 @@
         <maven.version>3.0.0-M5</maven.version>
         <skip.unit.tests>false</skip.unit.tests>
         <skip.integration.tests>false</skip.integration.tests>
-    </properties>
+        <sonar.organization>jashka34</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -3,7 +3,7 @@ name: Code Quality
 on:
   
   push:
-    branches: [ feature/** ]
+    branches: [ feature123/** ]
 
 jobs:
 
@@ -76,7 +76,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: true
-          path_to_write_report: target/codecov_report.txt
+          #path_to_write_report: target/codecov_report.txt
 
       - name: ls
         run: |
