@@ -3,11 +3,10 @@ on:
   push:
     branches:
       - master
-      - feature/**
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
+  build:
     name: Build
     runs-on: ubuntu-latest
     steps:
