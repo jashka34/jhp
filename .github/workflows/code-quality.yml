@@ -72,7 +72,7 @@ jobs:
       - name: Code coverage
         uses: codecov/codecov-action@v2
         with:
-          continue-on-error: true
+          #continue-on-error: true
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: true
