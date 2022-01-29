@@ -27,7 +27,7 @@ jobs:
           distribution: adopt
 
       - name: Maven Verify
-        run: mvn -B clean test
+        run: mvn -B clean verify
 
       - name: Code coverage
         uses: codecov/codecov-action@v2
@@ -37,4 +37,3 @@ jobs:
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: true
           #path_to_write_report: target/codecov_report.txt
-
