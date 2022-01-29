@@ -35,7 +35,7 @@ public class GreetingTests {
     void greetingWithNameHhhJsonTest()  throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/greeting?name=Hhh").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Hello, Hhh!"));
+                .andExpect(jsonPath("$.name").value("Hello, Hhh2!"));
     }
 
 }
