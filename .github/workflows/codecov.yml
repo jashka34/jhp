@@ -8,8 +8,11 @@ on:
   push:
     branches:
       - 'master'
+      - *
 
 jobs:
+
+  #if: 1 == 2
 
   codecov:
     name: Codecov
@@ -29,6 +32,10 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
+      - name: |
+          - ls -lah target
+          - ls -lah target/site/jacoco/
+          
       - name: Code coverage
         uses: codecov/codecov-action@v2
         with:
