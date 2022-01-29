@@ -8,7 +8,7 @@ on:
   push:
     branches:
       - 'master'
-      - '**'
+      - '*'
 
 jobs:
 
@@ -32,7 +32,8 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
-      - name: |
+      - name: ls-es
+      - run: |
           - ls -lah target
           - ls -lah target/site/jacoco/
 
