@@ -34,8 +34,8 @@ jobs:
 
       - name: ls-es
         run: |
-          - ls -lah target
-          - ls -lah target/site/jacoco/
+            ls -lah target
+            ls -lah target/site/jacoco/
 
       - name: Code coverage
         uses: codecov/codecov-action@v2
