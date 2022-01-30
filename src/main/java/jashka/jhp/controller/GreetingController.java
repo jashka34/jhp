@@ -18,4 +18,19 @@ public class GreetingController {
 
     return new Greeting(String.format(greet, name));
   }
+
+  @GetMapping("/greeting1")
+  public final Greeting greeting1(final @RequestParam(value = "name", defaultValue = "World") String name) {
+    final String greet = "Hello 1, %s!";
+
+    return new Greeting(String.format(greet, name));
+  }
+
+  @GetMapping("/greeting2")
+  public final Greeting greeting2(final @RequestParam(value = "name", defaultValue = "World") String name) {
+    final String greet = "Hello 2, %s!";
+
+    return new Greeting(String.format(greet, name));
+  }
+
 }
