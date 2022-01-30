@@ -6,6 +6,7 @@ on:
 
 jobs:
   triage:
+    if: 1 == 2
     runs-on: ubuntu-18.04
     steps:
       - uses: zwaldowski/match-label-action@v2
