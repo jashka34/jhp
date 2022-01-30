@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    if: 1 == 2
+    if: 1 == 1
     name: Build
     runs-on: ubuntu-latest
     steps:
