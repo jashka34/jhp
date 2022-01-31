@@ -10,7 +10,7 @@
     </parent>
     <groupId>jashka</groupId>
     <artifactId>jhp</artifactId>
-    <version>0.1.0-4RC</version>
+    <version>0.1.0-5rc</version>
     <name>jhp app</name>
     <packaging>jar</packaging>
     <description>Java Spring Heroku Practice Desc</description>
@@ -42,11 +42,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency-->
         <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
@@ -260,7 +260,7 @@
                                 <configuration>
                                     <generateBackupPoms>false</generateBackupPoms>
                                     <!--suppress UnresolvedMavenProperty -->
-                                    <newVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${parsedVersion.nextBuildNumber}RC</newVersion>
+                                    <newVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${parsedVersion.nextBuildNumber}rc</newVersion>
                                 </configuration>
                             </execution>
                         </executions>
