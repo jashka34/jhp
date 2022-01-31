@@ -1,4 +1,4 @@
-name: Build
+name: Sonar check
 on:
   push:
     branches:
@@ -7,8 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    if: 1 == 1
-    name: Build
+    name: Mvn sonar verify
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,12 +29,17 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Show git hash
+        run: |
+          echo "GITHUB_SHA="$GITHUB_SHA
+          echo "GITHUB_REF="$GITHUB_REF
+          echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B clean verify sonar:sonar -Dsonar.qualitygate.wait=true -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=jashka34_jhp -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
-      - name: ls-s
-        run: |
-          ls -lah target
-          ls -lah target/site/jacoco
+#      - name: ls-s
+#        run: |
+#          ls -lah target
+#          ls -lah target/site/jacoco
