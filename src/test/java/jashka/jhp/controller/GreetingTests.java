@@ -31,18 +31,18 @@ class GreetingTests {
                 .andExpect(jsonPath("$.name").value("Hello, Ivan!"));
     }
 
-    @Test
-    void greeting1WithNameHhhJsonTest()  throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/greeting1?name=greet1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Hello 1, greet1!"));
-    }
-
-    @Test
-    void greeting2WithNameHhhJsonTest()  throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/greeting2?name=greet2").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Hello 2, greet2!"));
-    }
+//    @Test
+//    void greeting1WithNameHhhJsonTest()  throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/greeting1?name=greet1").accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.name").value("Hello 1, greet1!"));
+//    }
+//
+//    @Test
+//    void greeting2WithNameHhhJsonTest()  throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/greeting2?name=greet2").accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.name").value("Hello 2, greet2!"));
+//    }
 
 }
