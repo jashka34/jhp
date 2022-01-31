@@ -34,6 +34,7 @@ jobs:
           echo "GITHUB_SHA="$GITHUB_SHA
           echo "GITHUB_REF="$GITHUB_REF
           echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
+           echo "mvn project ver="$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
