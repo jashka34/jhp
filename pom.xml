@@ -10,7 +10,7 @@
     </parent>
     <groupId>jashka</groupId>
     <artifactId>jhp</artifactId>
-    <version>0.1.0-9rc</version>
+    <version>0.1.0-10rc</version>
     <name>jhp app</name>
     <packaging>jar</packaging>
     <description>Java Spring Heroku Practice Desc</description>
