@@ -24,12 +24,12 @@ class GreetingTests {
                 .andExpect(jsonPath("$.name").value("Hello, World!"));
     }
 
-    @Test
-    void greetingWithNameJsonTest()  throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/greeting?name=Ivan").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Hello, Ivan!"));
-    }
+//    @Test
+//    void greetingWithNameJsonTest()  throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/greeting?name=Ivan").accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.name").value("Hello, Ivan!"));
+//    }
 
 //    @Test
 //    void greeting1WithNameHhhJsonTest()  throws Exception {
