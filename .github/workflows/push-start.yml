@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref_name != 'master' && github.ref_name != 'release'
     steps:
-      - name: Ref is feature
-        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
-        run: echo "its feature!"
+#      - name: Ref is feature
+#        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
+#        run: echo "its a (feature|bugfix)!"
 #      - name: Wrong branch name fromat (delete branch)
 #        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
 #        uses: dawidd6/action-delete-branch@v3
