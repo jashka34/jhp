@@ -15,6 +15,7 @@ jobs:
           echo "GITHUB_REF="$GITHUB_REF
           echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
           echo "GITHUB_EVENT_NAME="$GITHUB_EVENT_NAME
+          echo "github.event_name="${{ github.event_name }}
       - uses: deepakputhraya/action-branch-name@master
         with:
           #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
@@ -27,7 +28,7 @@ jobs:
     name: Label check
     steps:
       - name: Check labels
-        if: ${{ github.GITHUB_EVENT_NAME == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         uses: zwaldowski/match-label-action@v2
         with:
           allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
