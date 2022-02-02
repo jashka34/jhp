@@ -27,7 +27,7 @@ jobs:
     name: Label check
     steps:
       - name: Check labels
-        if: github.GITHUB_EVENT_NAME == 'pull_request'
+        if: ${{ github.GITHUB_EVENT_NAME == 'pull_request' }}
         uses: zwaldowski/match-label-action@v2
         with:
           allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
