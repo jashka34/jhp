@@ -1,3 +1,4 @@
+description: 'Show Github context varibles'
 name: Show Github context varibles
 runs:
   using: "composite"

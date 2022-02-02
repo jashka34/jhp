@@ -1,3 +1,8 @@
+description: 'Maven tests'
+inputs:
+  GH_TOKEN:
+    description: "Github token"
+    required: true
 name: Start Maven unit-tests
 runs:
   using: "composite"
@@ -9,5 +14,5 @@ runs:
     - name: Start Maven unit-tests
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
       run: mvn -B clean test
