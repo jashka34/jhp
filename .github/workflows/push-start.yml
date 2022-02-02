@@ -15,10 +15,11 @@ jobs:
           echo "github.ref_name="${{ github.ref_name }}
           echo "github.base_ref="${{ github.base_ref }}
           echo "github.head_ref="${{ github.head_ref }}
-  check-branch-format:
-    name: Check branch format
+  check-branch-format-feature:
+    name: Check branch format feature
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ startsWith(github.ref_name, 'feature') }}
+      - name: Ref is feauture
+        if: ${{ startsWith(github.ref_name, 'feature') }}
       - uses: actions/checkout@v2
       - uses: ./.github/actions/unit-tests.yml
