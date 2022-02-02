@@ -25,6 +25,7 @@ jobs:
           github_token: ${{github.token}}
           branches: ${{github.ref_name}}
       - name: Wrong branch name fromat  (exit 1)
+        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
         run: |
           echo "branch must be only (feature|bugfix)/**!"
           exit 1
