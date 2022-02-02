@@ -5,16 +5,21 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  branch-naming-rules:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: deepakputhraya/action-branch-name@master
-        with:
-          #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
-          allowed_prefixes: 'feature,stable,fix' # All branches should start with the given prefix
-          ignore: master,develop # Ignore exactly matching branch names from convention
-          min_length: 5 # Min length of the branch name
-          max_length: 20 # Max length of the branch name
+#  branch-naming-rules:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Show branch ref data
+#      run: |
+#        echo "GITHUB_SHA="$GITHUB_SHA
+#        echo "GITHUB_REF="$GITHUB_REF
+#        echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
+#      - uses: deepakputhraya/action-branch-name@master
+#        with:
+#          #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
+#          allowed_prefixes: 'feature,stable,fix' # All branches should start with the given prefix
+#          ignore: master,develop # Ignore exactly matching branch names from convention
+#          min_length: 5 # Min length of the branch name
+#          max_length: 20 # Max length of the branch name
   sonar-testing:
     needs: [branch-naming-rules]
     name: Mvn sonar verify
@@ -40,7 +45,7 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Show git hash
+      - name: Show branch ref data
         run: |
           echo "GITHUB_SHA="$GITHUB_SHA
           echo "GITHUB_REF="$GITHUB_REF
