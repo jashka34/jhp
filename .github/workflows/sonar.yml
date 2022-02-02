@@ -1,11 +1,12 @@
 name: Sonar check
 on:
-  push:
-    branches: [master, '**']
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+#  push:
+#    branches: [master, '**']
+#  pull_request:
+#    types: [opened, synchronize, reopened]
 jobs:
-  branch-naming-rules:
+  show-gh-ref-names:
     name: Show gh ref names
     runs-on: ubuntu-latest
     steps:

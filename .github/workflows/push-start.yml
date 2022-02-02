@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
+  check-branch-format-feature:
+    name: Check branch format feature
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ref is feature
+        if: ${{ startsWith(github.ref_name, 'feature/') }}
+        run: echo "its feature!"
+      - name: Ref is not feature
+        if: ${{ !startsWith(github.ref_name, 'feature/') }}
+        run: |
+          echo "branch must be only feature/**!"
+          exit 1

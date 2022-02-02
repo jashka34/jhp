@@ -1,0 +1,18 @@
+description: 'Maven tests'
+inputs:
+  GH_TOKEN:
+    description: "Github token"
+    required: true
+name: Start Maven unit-tests
+runs:
+  using: "composite"
+  steps:
+    - name: Set up JDK 17
+      uses: actions/setup-java@v1
+      with:
+        java-version: 17
+    - name: Start Maven unit-tests
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: mvn -B clean test
