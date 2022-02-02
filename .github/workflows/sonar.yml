@@ -31,7 +31,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   label-check:
-    needs [label-assign]
+    needs: [label-assign]
     runs-on: ubuntu-latest
     name: Label check
     steps:
