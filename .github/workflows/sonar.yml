@@ -37,7 +37,7 @@ jobs:
     needs: [branch-naming-rules, label-check]
     name: Mvn sonar verify
     runs-on: ubuntu-latest
-    if: ${{( github.event_name == 'pull_request' && github.base_ref == 'master') || (github.event_name = 'push' && github.ref_name == 'master') }}
+    if: ${{( github.event_name == 'pull_request' && github.base_ref == 'master') || (github.event_name == 'push' && github.ref_name == 'master') }}
     steps:
       - uses: actions/checkout@v2
         with:
