@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   branch-naming-rules:
-    name: Show branch ref data
+    name: Shbn
     runs-on: ubuntu-latest
     steps:
       - name: Ebn
