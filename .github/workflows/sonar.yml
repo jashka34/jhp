@@ -5,7 +5,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  branch-naming-rules:
+  if: 1 == 2
+  show-gh-ref-names:
     name: Show gh ref names
     runs-on: ubuntu-latest
     steps:

@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo gh ref names
+        run: |
+          echo "github.sha="${{ github.sha }}
+          echo "github.event_name="${{ github.event_name }}
+          echo "github.ref="${{ github.ref }}
+          echo "github.ref_name="${{ github.ref_name }}
+          echo "github.base_ref="${{ github.base_ref }}
+          echo "github.head_ref="${{ github.head_ref }}
+  check-branch-format:
+    name: Check branch format
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ startsWith(github.ref_name) == 'feature' }}
+        uses: .github/workflows/unit-tests.yml
