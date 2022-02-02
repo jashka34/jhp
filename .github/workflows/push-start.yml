@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/echo-github-context/
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
   check-branch-format-feature:
     name: Check branch format feature
     runs-on: ubuntu-latest
