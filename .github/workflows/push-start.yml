@@ -14,14 +14,11 @@ jobs:
     name: Check branch format feature
     runs-on: ubuntu-latest
     steps:
-      - name: Ref is feauture
-        if: ${{ startsWith(github.ref_name, 'feature') }}
+      - name: Ref is feature
+        if: ${{ startsWith(github.ref_name, 'feature/') }}
         run: echo "its feature!"
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
-      - name: Start tests
-        uses: ./.github/actions/unit-tests/
-        with:
-          GH_TOKEN: github.GITHUB_TOKEN
+      - name: Ref is not feature
+        if: ${{ !startsWith(github.ref_name, 'feature/') }}
+        run: |
+          echo "branch must be only feature/**!"
+          exit 1
