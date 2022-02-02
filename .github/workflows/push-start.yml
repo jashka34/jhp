@@ -23,5 +23,5 @@ jobs:
           fetch-depth: 0
       - name: Start tests
         uses: ./.github/actions/unit-tests/
-          with:
-            github.
+        with:
+          GH_TOKEN: github.GITHUB_TOKEN
