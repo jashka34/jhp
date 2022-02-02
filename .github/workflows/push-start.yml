@@ -2,22 +2,25 @@ on:
   push:
     branches:
       - '**'
+      - '!master'
+      - '!release'
 jobs:
   show-gh-ref-names:
-    name: Show gh ref names
+    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
+    name: Show gh ref names (pull start)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Show Github context
         uses: ./.github/actions/echo-github-context/
   check-branch-format-1:
-    name: Check branch format (feature|bugfix)
+    name: Check branch format (feature|bugfix) (push)
     runs-on: ubuntu-latest
-    if: github.ref_name != 'master' && github.ref_name != 'release'
+    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
     steps:
-      - name: Ref is feature
-        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
-        run: echo "its feature!"
+#      - name: Ref is feature
+#        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
+#        run: echo "its a (feature|bugfix)!"
 #      - name: Wrong branch name fromat (delete branch)
 #        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
 #        uses: dawidd6/action-delete-branch@v3
