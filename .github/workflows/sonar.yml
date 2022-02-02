@@ -24,7 +24,14 @@ jobs:
           ignore: master,develop # Ignore exactly matching branch names from convention
           min_length: 5 # Min length of the branch name
           max_length: 20 # Max length of the branch name
+  label-assign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
   label-check:
+    needs [label-assign]
     runs-on: ubuntu-latest
     name: Label check
     steps:
