@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ebn
-      run: |
-        echo "GITHUB_SHA="$GITHUB_SHA
-        echo "GITHUB_REF="$GITHUB_REF
-        echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
+        run: |
+          echo "GITHUB_SHA="$GITHUB_SHA
+          echo "GITHUB_REF="$GITHUB_REF
+          echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
       - uses: deepakputhraya/action-branch-name@master
         with:
           #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
