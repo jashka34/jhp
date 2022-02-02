@@ -16,6 +16,8 @@ jobs:
           echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
           echo "GITHUB_EVENT_NAME="$GITHUB_EVENT_NAME
           echo "github.event_name="${{ github.event_name }}
+          echo "github.ref="${{ github.ref }}
+          echo "github.head_ref="${{ github.head_ref }}
       - uses: deepakputhraya/action-branch-name@master
         with:
           #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
@@ -36,7 +38,7 @@ jobs:
     needs: [branch-naming-rules, label-check]
     name: Mvn sonar verify
     runs-on: ubuntu-latest
-    if: github.event_name == 'master'
+    if: github.base_ref == 'master'
     steps:
       - uses: actions/checkout@v2
         with:
