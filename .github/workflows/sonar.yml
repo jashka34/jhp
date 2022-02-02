@@ -9,7 +9,7 @@ jobs:
     name: Show branch ref data
     runs-on: ubuntu-latest
     steps:
-      - name: Echo branch ref data
+      - name: Ebn
       run: |
         echo "GITHUB_SHA="$GITHUB_SHA
         echo "GITHUB_REF="$GITHUB_REF
