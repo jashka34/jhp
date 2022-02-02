@@ -18,12 +18,12 @@ jobs:
       - name: Ref is feature
         if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
         run: echo "its feature!"
-      - name: Wrong branch name fromat (delete branch)
-        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
-        uses: dawidd6/action-delete-branch@v3
-        with:
-          github_token: ${{github.token}}
-          branches: ${{github.ref_name}}
+#      - name: Wrong branch name fromat (delete branch)
+#        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
+#        uses: dawidd6/action-delete-branch@v3
+#        with:
+#          github_token: ${{github.token}}
+#          branches: ${{github.ref_name}}
       - name: Wrong branch name fromat  (exit 1)
         if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
         run: |
