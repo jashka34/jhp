@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   branch-naming-rules:
-    name: Shbn
+    name: Show gh ref names
     runs-on: ubuntu-latest
     steps:
       - name: Ebn
@@ -21,8 +21,16 @@ jobs:
           ignore: master,develop # Ignore exactly matching branch names from convention
           min_length: 5 # Min length of the branch name
           max_length: 20 # Max length of the branch name
+  label-check:
+    runs-on: ubuntu-18.04
+    name: label-check
+    steps:
+      - name: Check labels
+        uses: zwaldowski/match-label-action@v2
+        with:
+          allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
   sonar-testing:
-    needs: [branch-naming-rules]
+    needs: [branch-naming-rules, label-check]
     name: Mvn sonar verify
     runs-on: ubuntu-latest
     if: github.GITHUB_REF_NAME == 'master'
