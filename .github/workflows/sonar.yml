@@ -36,7 +36,7 @@ jobs:
     needs: [branch-naming-rules, label-check]
     name: Mvn sonar verify
     runs-on: ubuntu-latest
-    if: github.GITHUB_BASE_REF == 'master'
+    if: github.event_name == 'master'
     steps:
       - uses: actions/checkout@v2
         with:
