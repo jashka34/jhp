@@ -14,7 +14,7 @@ jobs:
           echo "GITHUB_SHA="$GITHUB_SHA
           echo "GITHUB_REF="$GITHUB_REF
           echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
-          echo "GITHUB_EVENT_NAME="GITHUB_EVENT_NAME
+          echo "GITHUB_EVENT_NAME="$GITHUB_EVENT_NAME
       - uses: deepakputhraya/action-branch-name@master
         with:
           #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
