@@ -1,19 +1,23 @@
 name: Sonar check
 on:
   push:
-    branches: [master]
+    branches: [master, '**']
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
   branch-naming-rules:
-    name: Show branch ref data
+    name: Show gh ref names
     runs-on: ubuntu-latest
     steps:
-      - name: Ebn
-      run: |
-        echo "GITHUB_SHA="$GITHUB_SHA
-        echo "GITHUB_REF="$GITHUB_REF
-        echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
+      - name: Echo gh ref names
+        run: |
+          echo "GITHUB_SHA="$GITHUB_SHA
+          echo "GITHUB_REF="$GITHUB_REF
+          echo "GITHUB_BASE_REF="$GITHUB_BASE_REF
+          echo "GITHUB_EVENT_NAME="$GITHUB_EVENT_NAME
+          echo "github.event_name="${{ github.event_name }}
+          echo "github.ref="${{ github.ref }}
+          echo "github.head_ref="${{ github.head_ref }}
       - uses: deepakputhraya/action-branch-name@master
         with:
           #          regex: '([a-z])+\/([a-z])+' # Regex the branch should match. This example enforces grouping
@@ -21,11 +25,20 @@ jobs:
           ignore: master,develop # Ignore exactly matching branch names from convention
           min_length: 5 # Min length of the branch name
           max_length: 20 # Max length of the branch name
+  label-check:
+    runs-on: ubuntu-latest
+    name: Label check
+    steps:
+      - name: Check labels
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: zwaldowski/match-label-action@v2
+        with:
+          allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
   sonar-testing:
-    needs: [branch-naming-rules]
+    needs: [branch-naming-rules, label-check]
     name: Mvn sonar verify
     runs-on: ubuntu-latest
-    if: $GITHUB_REF_NAME == 'master'
+    if: github.base_ref == 'master'
     steps:
       - uses: actions/checkout@v2
         with:
