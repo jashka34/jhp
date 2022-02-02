@@ -49,7 +49,7 @@ class GreetingTests {
     void greeting3WithNameJsonTest()  throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/greeting3?name=greet3").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Hello 33, greet3!"));
+                .andExpect(jsonPath("$.name").value("Hello 3, greet3!"));
     }
 
     @Test
