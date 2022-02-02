@@ -13,7 +13,7 @@ jobs:
   check-branch-format-1:
     name: Check branch format (feature|bugfix) (push)
     runs-on: ubuntu-latest
-    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number == ''
+    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
     steps:
 #      - name: Ref is feature
 #        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
