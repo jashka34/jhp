@@ -13,12 +13,13 @@ jobs:
   check-branch-format-feature:
     name: Check branch format feature
     runs-on: ubuntu-latest
+    if: github.ref_name != 'master' and github.ref_name != 'release'
     steps:
       - name: Ref is feature
-        if: ${{ startsWith(github.ref_name, 'feature/') }}
+        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
         run: echo "its feature!"
       - name: Ref is not feature
-        if: ${{ !startsWith(github.ref_name, 'feature/') }}
+        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
         run: |
-          echo "branch must be only feature/**!"
+          echo "branch must be only (feature|bugfix)/**!"
           exit 1
