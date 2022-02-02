@@ -4,7 +4,7 @@ on:
       - '**'
 jobs:
   show-gh-ref-names:
-    name: Show gh ref names
+    name: Show gh ref names (pull start)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

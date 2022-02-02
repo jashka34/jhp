@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    branches:
+      - '**'
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names (pull-start)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
