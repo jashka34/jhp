@@ -31,4 +31,5 @@ jobs:
         if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
         run: |
           echo "branch must be only (feature|bugfix)/**!"
+          git branch -D github.ref_name 
           exit 1
