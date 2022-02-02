@@ -26,4 +26,4 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - uses: ./.github/actions/unit-tests.yml
+      - uses: ./.github/actions/unit-tests/
