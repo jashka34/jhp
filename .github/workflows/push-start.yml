@@ -23,4 +23,7 @@ jobs:
         if: ${{ startsWith(github.ref_name, 'feature') }}
         run: echo "its feature!"
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
       - uses: ./.github/actions/unit-tests.yml
