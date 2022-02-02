@@ -19,5 +19,5 @@ jobs:
     name: Check branch format
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ startsWith(github.ref_name) == 'feature' }}
+      - if: ${{ startsWith(github.ref_name, 'feature') }}
         uses: ./.github/workflows/unit-tests.yml
