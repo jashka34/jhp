@@ -18,9 +18,13 @@ jobs:
       - name: Ref is feature
         if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
         run: echo "its feature!"
-      - name: Ref is not feature
+      - name: Ref is not feature (delete branch)
         if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{github.token}}
+          branches: ${{github.ref_name}}
+      - name: Ref is not feature (exit 1)
         run: |
           echo "branch must be only (feature|bugfix)/**!"
-          git branch -D github.ref_name 
           exit 1
