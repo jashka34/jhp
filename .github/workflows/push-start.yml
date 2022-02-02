@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - '**'
+      - '!master'
+      - '!release'
 jobs:
   show-gh-ref-names:
     if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
