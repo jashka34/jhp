@@ -6,7 +6,7 @@ on:
       - '!release'
 jobs:
   show-gh-ref-names:
-    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
+    if: github.event.number == ''
     name: Show gh ref names (pull start)
     runs-on: ubuntu-latest
     steps:
