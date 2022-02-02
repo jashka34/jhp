@@ -3,6 +3,7 @@ runs:
   using: "composite"
   steps:
     - name: Echo gh ref names (unit-test)
+      shell: bash
       run: |
         echo "github.sha="${{ github.sha }}
         echo "github.event_name="${{ github.event_name }}
