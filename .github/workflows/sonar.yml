@@ -9,7 +9,7 @@ jobs:
     name: Show gh ref names
     runs-on: ubuntu-latest
     steps:
-      - name: Ebn
+      - name: Echo gh ref names
         run: |
           echo "GITHUB_SHA="$GITHUB_SHA
           echo "GITHUB_REF="$GITHUB_REF
@@ -23,11 +23,11 @@ jobs:
           min_length: 5 # Min length of the branch name
           max_length: 20 # Max length of the branch name
   label-check:
-    runs-on: ubuntu-18.04
-    name: label-check
-    if: github.GITHUB_EVENT_NAME == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Label check
     steps:
       - name: Check labels
+        if: github.GITHUB_EVENT_NAME == 'pull_request'
         uses: zwaldowski/match-label-action@v2
         with:
           allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
