@@ -13,3 +13,7 @@ runs:
         echo "github.base_ref="${{ github.base_ref }}
         echo "github.head_ref="${{ github.head_ref }}
         echo "github.event.number="${{ github.event.number }}
+        echo "github.run_id="${{ github.run_id }}
+        echo "github.run_number="${{ github.run_number }} 
+        echo "github.workflow="${{ github.workflow }} 
+        echo "github.event="${{ github.event }}
