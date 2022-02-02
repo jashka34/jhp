@@ -16,4 +16,4 @@ runs:
         echo "github.run_id="${{ github.run_id }}
         echo "github.run_number="${{ github.run_number }} 
         echo "github.workflow="${{ github.workflow }} 
-        echo "github.event="${{ toFSON(github.event) }}
+        echo "github.event="${{ toJSON(github.event) }}
