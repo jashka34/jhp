@@ -1,5 +1,5 @@
 on:
-  workflow_call:
+  workflow_dispatch:
 jobs:
   show-gh-ref-names:
     name: Show gh ref names (unit-test)
