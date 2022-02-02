@@ -16,4 +16,5 @@ runs:
         echo "github.run_id="${{ github.run_id }}
         echo "github.run_number="${{ github.run_number }} 
         echo "github.workflow="${{ github.workflow }} 
-        echo "github.env="${{ github.env) }}
+        echo "github.action="${{ github.action }}
+        echo "github.env="${{ github.env }}
