@@ -16,7 +16,7 @@ jobs:
     if: github.base_ref == 'master'
     steps:
       - name: Can't create pull-request from not (feature|bugfix) branch
-        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
+        if: ${{ startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'bugfix/') }}
         uses: peter-evans/close-pull@v1
         with:
           pull-request-number: github.event.number
