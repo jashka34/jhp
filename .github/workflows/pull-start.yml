@@ -13,7 +13,7 @@ jobs:
   check-branch-format-1:
     name: Check branch format (feature|bugfix)
     runs-on: ubuntu-latest
-    if: github.ref_name == 'master'
+    if: github.base_ref == 'master'
     steps:
       - name: Can't create pull-request from not (feature|bugfix) branch
         if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
