@@ -2,9 +2,6 @@ on:
   push:
     branches:
       - '**'
-    branches-ignore:
-      - 'master'
-      - 'release'
 jobs:
   show-gh-ref-names:
     name: Show gh ref names
