@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    branches:
+      - 'master'
+    types: [opened, reopened, synchronize]
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names (pull-start)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
+  check-pull-to-master:
+    name: Check pull-request to master
+    runs-on: ubuntu-latest
+    steps:
+      - name: Can't create pull-request to master, only release -> master available.
+        uses: peter-evans/close-pull@v1
+        with:
+          pull-request-number: ${{ github.event.number }}
+          comment: |
+            :thumbsdown: :x: Auto-closing pull request. 
+            Because can't create pull-request to master, only <b>release -> master</b> available.
+          delete-branch: false

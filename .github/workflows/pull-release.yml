@@ -1,0 +1,40 @@
+on:
+#  push:
+#    branches:
+#      - 'release'
+  pull_request:
+    branches:
+      - 'release'
+    #types: [opened, reopened, synchronize]
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names (pull-start)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
+  check-branch-format:
+    name: Check branch format (feature|bugfix) (pull-request)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Can't create pull-request from not (feature|bugfix) branch
+        if: ${{ github.base_ref == 'release' && (!startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'bugfix/')) }}
+        uses: peter-evans/close-pull@v1
+        with:
+          pull-request-number: ${{ github.event.number }}
+          comment: |
+            :thumbsdown: :x: Auto-closing pull request.
+            Because you can't create pull-request from not (feature|bugfix) branch.
+          delete-branch: false
+  sonar-check:
+    #if: ${{ github.base_ref == 'release' }}
+    needs: [check-branch-format]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sonar check start
+        uses: ./.github/actions/sonar-check/
+        with:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNR_TOKEN: ${{ secrets.SONAR_TOKEN }}
