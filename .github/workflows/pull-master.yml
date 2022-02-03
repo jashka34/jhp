@@ -20,6 +20,6 @@ jobs:
         with:
           pull-request-number: ${{ github.event.number }}
           comment: |
-            :thumbsdown: :x: Auto-closing pull request.
+            :thumbsdown: :x: Auto-closing pull request. 
             Because can't create pull-request to master, only <b>release -> master</b> available.
           delete-branch: false
