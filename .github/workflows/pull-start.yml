@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    branches:
+      - '**'
+jobs:
+  show-gh-ref-names:
+    name: Show gh ref names (pull-start)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Show Github context
+        uses: ./.github/actions/echo-github-context/
+  check-branch-format-1:
+    name: Check branch format (feature|bugfix) (pull-request)
+    runs-on: ubuntu-latest
+    if: github.base_ref == 'master'
+    steps:
+      - name: Can't create pull-request from not (feature|bugfix) branch
+        if: ${{ startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'bugfix/') }}
+        uses: peter-evans/close-pull@v1
+        with:
+          pull-request-number: github.event.number
+          comment: | 
+            Auto-closing pull request
+            Because you can't create pull-request from not (feature|bugfix) branch
+          delete-branch: true

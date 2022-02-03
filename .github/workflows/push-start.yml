@@ -2,9 +2,12 @@ on:
   push:
     branches:
       - '**'
+      - '!master'
+      - '!release'
 jobs:
   show-gh-ref-names:
-    name: Show gh ref names
+    if: github.ref_name != 'master' && github.ref_name != 'release' && github.event.number != ''
+    name: Show gh ref names (pull start)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
