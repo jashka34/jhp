@@ -21,4 +21,4 @@ jobs:
         with:
           pull-request-number: ${{ github.event.number }}
           comment: Auto-closing pull request, because you can't create pull-request from not (feature|bugfix) branch
-          delete-branch: true
+          delete-branch: false
