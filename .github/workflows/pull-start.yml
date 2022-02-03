@@ -21,7 +21,7 @@ jobs:
           pull-request-number: ${{ github.event.number }}
           comment: |
             :thumbsdown: :x: Auto-closing pull request.
-            Because can't create pull-request to master, only release -> master available.
+            Because can't create pull-request to master, only <b>release -> master</b> available.
           delete-branch: false
   check-branch-format-1:
     name: Check branch format (feature|bugfix) (pull-request)
