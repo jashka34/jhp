@@ -2,6 +2,7 @@ on:
   pull_request:
     branches:
       - '**'
+    types: [opened, reopened, synchronize]
 jobs:
   show-gh-ref-names:
     name: Show gh ref names (pull-start)
@@ -66,11 +67,3 @@ jobs:
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SNR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  update-draft-release:
-    if: ${{ github.base_ref == 'release' }}
-    needs: [sonar-check]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
