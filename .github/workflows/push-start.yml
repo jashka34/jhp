@@ -5,14 +5,14 @@ on:
       - '!master'
       - '!release'
 jobs:
-  show-gh-ref-names:
-    if: github.event.number == ''
-    name: Show gh ref names (pull start)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Show Github context
-        uses: ./.github/actions/echo-github-context/
+#  show-gh-ref-names:
+#    if: github.event.number == ''
+#    name: Show gh ref names (pull start)
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Show Github context
+#        uses: ./.github/actions/echo-github-context/
   check-branch-format-1:
     name: Check branch format (feature|bugfix)
     runs-on: ubuntu-latest
