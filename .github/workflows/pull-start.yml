@@ -37,17 +37,9 @@ jobs:
             :thumbsdown: :x: Auto-closing pull request.
             Because you can't create pull-request from not (feature|bugfix) branch.
           delete-branch: false
-  label-assign:
-    if: ${{ github.base_ref == 'release' }}
-    needs: [check-branch-format-1]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/labeler@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
   label-check:
     if: ${{ github.base_ref == 'release' }}
-    needs: [label-assign]
+    needs: [check-branch-format-1]
     runs-on: ubuntu-latest
     name: Label check
     steps:
