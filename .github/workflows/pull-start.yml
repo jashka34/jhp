@@ -66,3 +66,10 @@ jobs:
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SNR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  update_draft_release:
+    if: ${{ github.base_ref == 'release' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
