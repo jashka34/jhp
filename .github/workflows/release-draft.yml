@@ -1,12 +1,9 @@
 name: Release Draft
-
 on:
   push:
     branches:
-      - master
-
+      - release
 jobs:
-  if: 1 == 2
   update_draft_release:
     runs-on: ubuntu-latest
     steps:
