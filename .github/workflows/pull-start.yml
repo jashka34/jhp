@@ -60,3 +60,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Sonar check start
         uses: ./.github/actions/sonar-check/
+        with:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNR_TOKEN: ${{ secrets.SONAR_TOKEN }}
