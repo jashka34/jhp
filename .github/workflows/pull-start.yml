@@ -37,7 +37,7 @@ jobs:
             Because you can't create pull-request from not (feature|bugfix) branch.
           delete-branch: false
   label-assign:
-    needs: [check-pull-to-master,check-branch-format-1]
+    needs: [check-branch-format-1]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/labeler@v2
