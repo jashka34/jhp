@@ -37,6 +37,7 @@ jobs:
             Because you can't create pull-request from not (feature|bugfix) branch.
           delete-branch: false
   label-assign:
+    if: ${{ github.base_ref == 'release' }}
     needs: [check-branch-format-1]
     runs-on: ubuntu-latest
     steps:
@@ -44,6 +45,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   label-check:
+    if: ${{ github.base_ref == 'release' }}
     needs: [label-assign]
     runs-on: ubuntu-latest
     name: Label check
@@ -54,6 +56,7 @@ jobs:
         with:
           allowed: 'type:fix, type:features, theme:build, type:documentation, type:tests, type:config, theme:TRASH, theme:code'
   sonar-check:
+    if: ${{ github.base_ref == 'release' }}
     needs: [label-check]
     runs-on: ubuntu-latest
     steps:
