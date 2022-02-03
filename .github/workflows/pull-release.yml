@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches:
-      - '**'
+      - 'release'
     types: [opened, reopened, synchronize]
 jobs:
   show-gh-ref-names:
@@ -11,20 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show Github context
         uses: ./.github/actions/echo-github-context/
-  check-pull-to-master:
-    name: Check pull-request to master
-    runs-on: ubuntu-latest
-    if: ${{ github.base_ref == 'master' && github.head_ref != 'release' }}
-    steps:
-      - name: Can't create pull-request to master, only release -> master available.
-        uses: peter-evans/close-pull@v1
-        with:
-          pull-request-number: ${{ github.event.number }}
-          comment: |
-            :thumbsdown: :x: Auto-closing pull request.
-            Because can't create pull-request to master, only <b>release -> master</b> available.
-          delete-branch: false
-  check-branch-format-1:
+  check-branch-format:
     name: Check branch format (feature|bugfix) (pull-request)
     runs-on: ubuntu-latest
     steps:
@@ -37,20 +24,9 @@ jobs:
             :thumbsdown: :x: Auto-closing pull request.
             Because you can't create pull-request from not (feature|bugfix) branch.
           delete-branch: false
-  label-check:
-    if: ${{ github.base_ref == 'release' }}
-    needs: [check-branch-format-1]
-    runs-on: ubuntu-latest
-    name: Label check
-    steps:
-      - name: Check labels
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: zwaldowski/match-label-action@v2
-        with:
-          allowed: theme:build, theme:code, theme:tests, theme:documentation, theme:TRASH
   sonar-check:
-    if: ${{ github.base_ref == 'release' }}
-    needs: [label-check]
+    #if: ${{ github.base_ref == 'release' }}
+    needs: [check-branch-format]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

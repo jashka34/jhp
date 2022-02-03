@@ -5,6 +5,8 @@ jobs:
   assign-labels:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v3
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Labcheck
+        run: echo "Lab check (temporary disable)
+#      - uses: actions/labeler@v3
+#        with:
+#          repo-token: "${{ secrets.GITHUB_TOKEN }}"
