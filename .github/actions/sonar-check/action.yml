@@ -30,6 +30,7 @@ runs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build and analyze
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.GT_TOKEN }}
         SONAR_TOKEN: ${{ inputs.SNR_TOKEN }}
