@@ -5,34 +5,25 @@ on:
       - '!master'
       - '!release'
 jobs:
-  show-gh-ref-names:
-    if: github.event.number == ''
-    name: Show gh ref names (pull start)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Show Github context
-        uses: ./.github/actions/echo-github-context/
+#  show-gh-ref-names:
+#    if: github.event.number == ''
+#    name: Show gh ref names (pull start)
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Show Github context
+#        uses: ./.github/actions/echo-github-context/
   check-branch-format-1:
     name: Check branch format (feature|bugfix)
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.ref == ''
+    if: ${{ github.event.pull_request.head.ref == '' &&
+           !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
     steps:
-      - name: Ref is feature
-        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
-        run: echo "its feature!"
-#      - name: Wrong branch name fromat (delete branch)
-#        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
-#        uses: dawidd6/action-delete-branch@v3
+#      - name: Wrong branch name format (delete branch)
+#        uses: dawidd6/action-delete-branch@v3.1.0
 #        with:
 #          github_token: ${{github.token}}
 #          branches: ${{github.ref_name}}
-      - name: Wrong branch name format (exit 1)
-        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
-        uses: dawidd6/action-delete-branch@v3
-        with:
-          github_token: ${{github.token}}
-          branches: ${{github.ref_name}}
       - name: Wrong branch name fromat  (exit 1)
         if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
         run: |
