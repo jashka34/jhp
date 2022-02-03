@@ -1,7 +1,10 @@
 on:
+  push:
+    branches:
+      - 'release'
   pull_request:
     branches:
-      - 'feature/**'
+      - 'release'
     types: [opened, reopened, synchronize]
 jobs:
   show-gh-ref-names:
