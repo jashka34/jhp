@@ -14,7 +14,6 @@ runs:
       with:
         fetch-depth: 0
     - name: Set up JDK 17
-      shell: bash
       uses: actions/setup-java@v1
       with:
         java-version: 17
@@ -25,7 +24,6 @@ runs:
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
     - name: Cache Maven packages
-      shell: bash
       uses: actions/cache@v1
       with:
         path: ~/.m2
