@@ -22,5 +22,5 @@ jobs:
           pull-request-number: ${{ github.event.number }}
           comment: |
             :thumbsdown: :x: Auto-closing pull request.
-            Because you can't create pull-request from not (feature|bugfix) branch
+            Because you can't create pull-request from not (feature|bugfix) branch.
           delete-branch: false
