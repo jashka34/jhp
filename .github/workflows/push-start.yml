@@ -14,13 +14,13 @@ jobs:
       - name: Show Github context
         uses: ./.github/actions/echo-github-context/
   check-branch-format-1:
-    name: Check branch format (feature|bugfix) (push)
+    name: Check branch format (feature|bugfix)
     runs-on: ubuntu-latest
     if: github.event.pull_request.head.ref == ''
     steps:
-#      - name: Ref is feature
-#        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
-#        run: echo "its a (feature|bugfix)!"
+      - name: Ref is feature
+        if: ${{ startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/') }}
+        run: echo "its feature!"
 #      - name: Wrong branch name fromat (delete branch)
 #        if: ${{ !(startsWith(github.ref_name, 'feature/') || startsWith(github.ref_name, 'bugfix/')) }}
 #        uses: dawidd6/action-delete-branch@v3
