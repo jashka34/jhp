@@ -19,3 +19,4 @@ runs:
         echo "github.workflow="${{ github.workflow }} 
         echo "github.action="${{ github.action }}
         echo "github.env="${{ github.env }}
+        echo "github.event.pull_request.action="${{ github.event.pull_request.action }}
