@@ -2,6 +2,7 @@ on:
   pull_request:
     branches:
       - '**'
+    types: [opened, reopened, synchronize]
 jobs:
   show-gh-ref-names:
     name: Show gh ref names (pull-start)
