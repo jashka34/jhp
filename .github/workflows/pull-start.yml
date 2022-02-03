@@ -47,7 +47,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: zwaldowski/match-label-action@v2
         with:
-          allowed: 'theme:build, theme:code, theme:tests, theme:documentation, theme:TRASH'
+          allowed: theme:build, theme:code, theme:tests, theme:documentation, theme:TRASH
   sonar-check:
     if: ${{ github.base_ref == 'release' }}
     needs: [label-check]
