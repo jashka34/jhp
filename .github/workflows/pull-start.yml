@@ -20,7 +20,7 @@ jobs:
         uses: peter-evans/close-pull@v1
         with:
           pull-request-number: ${{ github.event.number }}
-          comment: | 
-            :x: Auto-closing pull request.
+          comment: |
+            :thumbsdown: :x: Auto-closing pull request.
             Because you can't create pull-request from not (feature|bugfix) branch
           delete-branch: false
