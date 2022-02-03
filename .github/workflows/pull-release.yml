@@ -1,10 +1,10 @@
 on:
-  push:
-    branches:
-      - 'release'
+#  push:
+#    branches:
+#      - 'release'
   pull_request:
     branches:
-      - 'release'
+      - '!release'
     #types: [opened, reopened, synchronize]
 jobs:
   show-gh-ref-names:
