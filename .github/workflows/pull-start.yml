@@ -16,11 +16,11 @@ jobs:
     if: github.base_ref == 'master'
     steps:
       - name: Can't create pull-request from not (feature|bugfix) branch
-        if: ${{ startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'bugfix/') }}
+        if: ${{ !startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'bugfix/') }}
         uses: peter-evans/close-pull@v1
         with:
-          pull-request-number: github.event.number
-          comment: | 
-            Auto-closing pull request
-            Because you can't create pull-request from not (feature|bugfix) branch
-          delete-branch: true
+          pull-request-number: ${{ github.event.number }}
+          comment: |
+            :thumbsdown: :x: Auto-closing pull request.
+            Because you can't create pull-request from not (feature|bugfix) branch.
+          delete-branch: false
