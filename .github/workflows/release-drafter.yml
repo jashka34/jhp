@@ -1,13 +1,9 @@
-name: Release Draft
-
+name: Release Drafter
 on:
-  push:
-    branches:
-      - master
-
+  release:
+    types: [published]
 jobs:
-  if: 1 == 2
-  update_draft_release:
+  update-draft-release:
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v5

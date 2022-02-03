@@ -1,9 +1,11 @@
+name: Push to all (except master, release, feature/**)
 on:
   push:
     branches:
       - '**'
       - '!master'
       - '!release'
+      - '!feature/**'
 jobs:
 #  show-gh-ref-names:
 #    if: github.event.number == ''
