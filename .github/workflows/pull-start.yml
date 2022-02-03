@@ -52,7 +52,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: zwaldowski/match-label-action@v2
         with:
-          allowed: 'type:fix, type:features, type:documentation, type:tests, type:config'
+          allowed: 'type:fix, type:features, theme:build, type:documentation, type:tests, type:config, theme:TRASH, theme:code'
   sonar-check:
     needs: [label-check]
     runs-on: ubuntu-latest
