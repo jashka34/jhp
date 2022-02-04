@@ -12,6 +12,7 @@ jobs:
       - name: Show Github context
         uses: ./.github/actions/echo-github-context/
   check-pull-to-master:
+    if: github.head_ref != 'release'
     name: Check pull-request to master
     runs-on: ubuntu-latest
     steps:
