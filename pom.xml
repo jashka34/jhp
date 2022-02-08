@@ -29,6 +29,14 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
@@ -224,7 +232,7 @@
                                             <POSTGRESQL_DATABASE>postgres</POSTGRESQL_DATABASE>
                                         </env>
                                         <ports>
-                                            <port>${postgres_master_port}:5432</port>
+                                            <port>${postgres_port}:5432</port>
                                         </ports>
                                         <network>
                                             <name>${groupId}-${artifactId}-network</name>
@@ -254,7 +262,7 @@
                         <configuration>
                             <user>postgres</user>
                             <password>postgres</password>
-                            <url>jdbc:postgresql://${docker_host}:${postgres_master_port}/postgres</url>
+                            <url>jdbc:postgresql://${docker_host}:${postgres_port}/postgres</url>
                         </configuration>
                     </plugin>
                 </plugins>
